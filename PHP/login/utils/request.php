@@ -28,7 +28,6 @@
     if($data = userFound($email, $password)) {
       session_start();
       $_SESSION['user'] = $data;
-      print_r($_SESSION);
       $_SESSION['logged'] = true;
       header('Location:../profile.php');
     }
