@@ -1,8 +1,11 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$db = "StarterPackPHP";
+
+include('conf.php');
+
+$servername = isset($servername) ? $servername : "localhost";
+$username = isset($username) ? $username : "root";
+$password = isset($password) ? $password : "";
+$db = isset($db) ? $db : "StarterPackPHP";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
