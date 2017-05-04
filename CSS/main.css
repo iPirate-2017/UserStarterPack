@@ -1,0 +1,13 @@
+.center {
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border: solid #3f51b5;
+    padding: 10px;
+}
+
+
+.btn-center{
+  margin-left: 35%;
+}
