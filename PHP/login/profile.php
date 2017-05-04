@@ -60,10 +60,14 @@
             </div>
             <div class="column is-4 name">
               <p>
-                <span class="title is-bold"><?= $_SESSION['email'] ?></span>
+                <span class="title is-bold"><?= $_SESSION['user']['email'] ?></span>
                 <span class="button is-primary is-outlined follow">Follow</span>
               </p>
-              <p class="tagline">The users profile bio would go here, of course. It could be two lines</p>
+              <p class="tagline">
+                <p><?= $_SESSION['user']['nom']." ".$_SESSION['user']['prenom'] ?></p>
+                <p><?= $_SESSION['user']['tel'] ?></p>
+                <p><?= $_SESSION['user']['date_naissance'] ?></p>
+              </p>
             </div>
             <div class="column is-2 followers has-text-centered">
               <p class="stat-val">129k</p>

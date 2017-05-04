@@ -13,7 +13,7 @@
     $response = $conn->query("SELECT * FROM user WHERE(email='$email' AND password='$password')");
     $data = $response->fetch();
     if($data) {
-      return true;
+      return $data;
     } else {
       return false;
     }
@@ -22,10 +22,10 @@
   function connectUser($email, $password) {
     global $conn;
 
-    if(userFound($email, $password)) {
+    if($data = userFound($email, $password)) {
       session_start();
-      $_SESSION['email'] = $email;
-      $_SESSION['password'] = $password;
+      $_SESSION['user'] = $data;
+      print_r($_SESSION);
       $_SESSION['logged'] = true;
       header('Location:../profile.php');
     }
