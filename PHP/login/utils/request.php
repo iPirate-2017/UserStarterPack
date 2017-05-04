@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
   require('/../../connect.php');
+=======
+  include('../../connect.php');
+>>>>>>> refs/remotes/origin/master
 
   if(isset($_POST['email']) && isset($_POST['password'])) {
     $email = $_POST['email'];
@@ -9,17 +13,25 @@
 
   function userFound($email, $password) {
     global $conn;
+<<<<<<< HEAD
     $response = $conn->query('SELECT * FROM user WHERE(email=\''. $email.'\' AND password=\''.$password.'\')');
+=======
+    $response = $conn->query("SELECT * FROM user WHERE(email='$email' AND password='$password')");
+>>>>>>> refs/remotes/origin/master
     $data = $response->fetch();
     if($data) {
       return true;
+    } else {
+      return false;
     }
-    return false;
   }
 
   function connectUser($email, $password) {
     global $conn;
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/master
     if(userFound($email, $password)) {
       session_start();
       $_SESSION['email'] = $email;
