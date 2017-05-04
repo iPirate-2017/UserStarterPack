@@ -1,5 +1,5 @@
 <?php
-  include('DB.php');
+  include('../../connect.php');
 
   if(isset($_POST['email']) && isset($_POST['password'])) {
     $email = $_POST['email'];
@@ -8,18 +8,18 @@
   }
 
   function userFound($email, $password) {
-    global $db;
-    $response = $db->query('SELECT * FROM user WHERE(email=\''. $email.'\' AND password=\''.$password.'\')');
+    global $conn;
+    $response = $conn->query("SELECT * FROM user WHERE(email='$email' AND password='$password')");
     $data = $response->fetch();
     if($data) {
       return true;
+    } else {
+      return false;
     }
-    return false;
   }
 
   function connectUser($email, $password) {
-    global $db;
-
+    global $conn;
     if(userFound($email, $password)) {
       session_start();
       $_SESSION['email'] = $email;
