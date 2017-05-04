@@ -9,9 +9,12 @@
 
   function userFound($email, $password) {
     global $conn;
+    $stmt = $conn->prepare("SELECT * FROM user WHERE(email='$email' AND password='$password')");
+    $stmt->execute();
 
-    $response = $conn->query("SELECT * FROM user WHERE(email='$email' AND password='$password')");
-    $data = $response->fetch();
+    // set the resulting array to associative
+    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $data = $stmt->fetch();
     if($data) {
       return $data;
     } else {
